@@ -3,6 +3,12 @@
 
 Un programa de escritorio desarrollado en Python para la gestión básica de información ganadera, ideal para el aprendizaje de Programación Orientada a Objetos.
 
+
+## Instrucciones 
+
+**Para usuarios nuevos**: Ejecuta `main.py` y sigue las instrucciones en pantalla
+Este README proporciona una guía completa para entender, instalar y utilizar el sistema de manejo ganadero.
+
 ## Características
 
 - **Gestión de Animales**: Registro de datos básicos (ID, especie, peso, fecha nacimiento)
