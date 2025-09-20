@@ -49,22 +49,25 @@ def agregar_animal(sistema):
     especie = input("Especie: ")
     peso = float(input("Peso (kg): "))
     
-    # Fecha de nacimiento
-    print("Fecha de nacimiento (aaaa-mm-dd): ")
-    anio = int(input("Año: "))
-    mes = int(input("Mes: "))
-    dia = int(input("Día: "))
+    # Opción más simple: pedir fecha en formato texto y convertir
+    fecha_str = input("Fecha de nacimiento (aaaa-mm-dd): ")
     
-    fecha_nac = date(anio, mes, dia)
-    
-    animal = Animal()
-    animal.id = id
-    animal.especie = especie
-    animal.peso = peso
-    animal.fecha_nac = fecha_nac
-    
-    sistema.agregar_animal(animal)
-    print("¡Animal agregado correctamente!")
+    try:
+        # Convertir string a fecha
+        anio, mes, dia = map(int, fecha_str.split('-'))
+        fecha_nac = date(anio, mes, dia)
+        
+        animal = Animal()
+        animal.id = id
+        animal.especie = especie
+        animal.peso = peso
+        animal.fecha_nac = fecha_nac
+        
+        sistema.agregar_animal(animal)
+        print("¡Animal agregado correctamente!")
+        
+    except ValueError:
+        print("Formato de fecha incorrecto. Use aaaa-mm-dd")
 
 def agregar_veterinario(sistema):
     print("\n--- AGREGAR VETERINARIO ---")
@@ -98,21 +101,24 @@ def registrar_evento(sistema):
         tipo = input("Tipo de evento: ")
         medicamento = input("Medicamento utilizado: ")
         
-        # Fecha del evento
-        print("Fecha del evento (aaaa-mm-dd): ")
-        anio = int(input("Año: "))
-        mes = int(input("Mes: "))
-        dia = int(input("Día: "))
+        # Fecha del evento - FORMA CORREGIDA
+        fecha_str = input("Fecha del evento (aaaa-mm-dd): ")
         
-        fecha_evento = date(anio, mes, dia)
-        
-        evento = EventoSanitario()
-        evento.tipo = tipo
-        evento.fecha = fecha_evento
-        evento.medicamento = medicamento
-        
-        sistema.registrar_evento(animal.id, evento)
-        print("¡Evento registrado correctamente!")
+        try:
+            # Dividir la fecha en partes
+            anio, mes, dia = map(int, fecha_str.split('-'))
+            fecha_evento = date(anio, mes, dia)
+            
+            evento = EventoSanitario()
+            evento.tipo = tipo
+            evento.fecha = fecha_evento
+            evento.medicamento = medicamento
+            
+            sistema.registrar_evento(animal.id, evento)
+            print("¡Evento registrado correctamente!")
+            
+        except ValueError:
+            print("Formato de fecha incorrecto. Use aaaa-mm-dd")
         
     except (ValueError, IndexError):
         print("Selección no válida.")
@@ -136,21 +142,23 @@ def registrar_produccion(sistema):
         tipo = input("Tipo de producción (leche/carne): ")
         cantidad = float(input("Cantidad: "))
         
-        # Fecha de producción
-        print("Fecha de producción (aaaa-mm-dd): ")
-        anio = int(input("Año: "))
-        mes = int(input("Mes: "))
-        dia = int(input("Día: "))
+        # Fecha de producción - FORMA CORREGIDA
+        fecha_str = input("Fecha de producción (aaaa-mm-dd): ")
         
-        fecha_prod = date(anio, mes, dia)
-        
-        produccion = Produccion()
-        produccion.tipo = tipo
-        produccion.cantidad = cantidad
-        produccion.fecha = fecha_prod
-        
-        sistema.registrar_produccion(animal.id, produccion)
-        print("¡Producción registrada correctamente!")
+        try:
+            anio, mes, dia = map(int, fecha_str.split('-'))
+            fecha_prod = date(anio, mes, dia)
+            
+            produccion = Produccion()
+            produccion.tipo = tipo
+            produccion.cantidad = cantidad
+            produccion.fecha = fecha_prod
+            
+            sistema.registrar_produccion(animal.id, produccion)
+            print("¡Producción registrada correctamente!")
+            
+        except ValueError:
+            print("Formato de fecha incorrecto. Use aaaa-mm-dd")
         
     except (ValueError, IndexError):
         print("Selección no válida.")
