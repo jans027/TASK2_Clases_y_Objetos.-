@@ -2,6 +2,6 @@
 
 class Registro:
     def __init__(self):
-        self.animal = None
-        self.evento = None
-        self.produccion = None
+        self.animal = None      # Animal asociado al registro
+        self.evento = None      # Evento sanitario (opcional)
+        self.produccion = None  # Datos de producción (opcional)
