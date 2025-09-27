@@ -13,7 +13,6 @@ class Database:
         conn = self.get_connection()
         cursor = conn.cursor()
         
-        # Tabla Animales
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS animales (
                 id TEXT PRIMARY KEY,
@@ -23,7 +22,6 @@ class Database:
             )
         ''')
         
-        # Tabla Veterinarios
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS veterinarios (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,7 +30,6 @@ class Database:
             )
         ''')
         
-        # Tabla Eventos Sanitarios
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS eventos_sanitarios (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,12 +38,10 @@ class Database:
                 fecha DATE NOT NULL,
                 medicamento TEXT NOT NULL,
                 veterinario_id INTEGER,
-                FOREIGN KEY (animal_id) REFERENCES animales (id),
-                FOREIGN KEY (veterinario_id) REFERENCES veterinarios (id)
+                FOREIGN KEY (animal_id) REFERENCES animales (id)
             )
         ''')
         
-        # Tabla Producción
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS produccion (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -61,37 +56,58 @@ class Database:
         conn.commit()
         conn.close()
     
-    # Métodos CRUD para Animales
+    # CRUD Animales
     def agregar_animal(self, animal):
         conn = self.get_connection()
         cursor = conn.cursor()
-        cursor.execute('''
-            INSERT INTO animales (id, especie, peso, fecha_nac)
-            VALUES (?, ?, ?, ?)
-        ''', (animal.id, animal.especie, animal.peso, animal.fecha_nac))
+        cursor.execute('INSERT INTO animales VALUES (?, ?, ?, ?)', 
+                      (animal.id, animal.especie, animal.peso, animal.fecha_nac))
         conn.commit()
         conn.close()
     
     def obtener_animales(self):
         conn = self.get_connection()
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM animales')
+        cursor.execute('SELECT * FROM animales ORDER BY id')
         animales = cursor.fetchall()
         conn.close()
         return animales
     
-    def actualizar_animal(self, animal_id, nuevo_peso):
+    # CRUD Veterinarios
+    def agregar_veterinario(self, veterinario):
         conn = self.get_connection()
         cursor = conn.cursor()
-        cursor.execute('''
-            UPDATE animales SET peso = ? WHERE id = ?
-        ''', (nuevo_peso, animal_id))
+        cursor.execute('INSERT INTO veterinarios (nombre, especialidad) VALUES (?, ?)', 
+                      (veterinario.nombre, veterinario.especialidad))
         conn.commit()
         conn.close()
     
-    def eliminar_animal(self, animal_id):
+    def obtener_veterinarios(self):
         conn = self.get_connection()
         cursor = conn.cursor()
-        cursor.execute('DELETE FROM animales WHERE id = ?', (animal_id,))
+        cursor.execute('SELECT * FROM veterinarios ORDER BY nombre')
+        veterinarios = cursor.fetchall()
+        conn.close()
+        return veterinarios
+    
+    # CRUD Eventos
+    def registrar_evento(self, animal_id, evento):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO eventos_sanitarios (animal_id, tipo, fecha, medicamento) 
+            VALUES (?, ?, ?, ?)
+        ''', (animal_id, evento.tipo, evento.fecha, evento.medicamento))
+        conn.commit()
+        conn.close()
+    
+    # CRUD Producción
+    def registrar_produccion(self, animal_id, produccion):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO produccion (animal_id, tipo, cantidad, fecha) 
+            VALUES (?, ?, ?, ?)
+        ''', (animal_id, produccion.tipo, produccion.cantidad, produccion.fecha))
         conn.commit()
         conn.close()
