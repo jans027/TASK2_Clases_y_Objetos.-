@@ -1,20 +1,19 @@
 SISTEMA DE MANEJO GANADERO
-===========================
+====================================
 
-Una aplicación simple para gestionar información ganadera desarrollada en Python.
+Una aplicación completa para gestión ganadera con interfaz gráfica, 
+base de datos y sistema de chat de soporte en tiempo real.
 
 CARACTERÍSTICAS PRINCIPALES
-- Gestión de animales (registro y consulta)
-- Control de eventos sanitarios
-- Registro de producción (leche, carne, etc.)
-- Administración de veterinarios
-- Reportes automáticos
-- Base de datos SQLite integrada
-
-SCRIPT PRINCIPAL
--------------------
-El archivo principal para ejecutar la aplicación es:
-interfaz.py
+-------------------------------
+Gestión completa de animales
+Registro de eventos sanitarios  
+Control de producción (leche, carne, etc.)
+Administración de veterinarios
+Reportes automáticos
+Base de datos SQLite integrada
+Chat de soporte en tiempo real
+Servidor de chat incorporado
 
 REQUISITOS DEL SISTEMA
 -------------------------
@@ -24,78 +23,56 @@ REQUISITOS DEL SISTEMA
 INSTALACIÓN Y EJECUCIÓN
 ---------------------------
 
-1. INSTALAR PYTHON (si no lo tienes):
-   - Windows: Descargar desde python.org
-   - Linux: sudo apt-get install python3 python3-tk
-   - Mac: Usar Homebrew: brew install python-tk
+1. EJECUCIÓN RÁPIDA:
+   Ejecutar interfaz.py
 
-2. EJECUTAR LA APLICACIÓN:
-   Abre una terminal/consola y navega a la carpeta del proyecto, luego ejecuta:
-
-   python interfaz.py
-
-   O si tienes varias versiones de Python:
-   python3 interfaz.py
-
-3. SOLUCIÓN DE PROBLEMAS:
-   Si aparece error con Tkinter:
-   - En Ubuntu/Debian: sudo apt-get install python3-tk
-   - En Windows: Reinstalar Python marcando "tcl/tk and IDLE"
-   - En Mac: brew install python-tk
 
 INSTRUCCIONES DE USO
 -----------------------
 
 1. PRIMER USO:
-   - Al ejecutar la aplicación se crea automáticamente la base de datos
+   - Al ejecutar se crea automáticamente la base de datos
+   - El servidor de chat se inicia automáticamente
    - No se requiere configuración adicional
 
-2. FLUJO DE TRABAJO RECOMENDADO:
+4. CHAT DE SOPORTE:
 
-   a) AGREGAR ANIMALES:
-      - Click en "Agregar Animal"
-      - Completar: ID, Especie, Peso, Fecha de nacimiento
-      - Formato fecha: YYYY-MM-DD (ej: 2024-01-15)
+   - "Chat de Soporte": Abre ventana de chat
+   - Ingresar nickname
+   - Escribir mensajes y presionar Enter
+   - El sistema responde automáticamente
+   - Funciona en tiempo real con el servidor
 
-   b) AGREGAR VETERINARIOS:
-      - Click en "Agregar Veterinario" 
-      - Ingresar nombre y especialidad
+SISTEMA DE CHAT DE SOPORTE
+-----------------------------
 
-   c) REGISTRAR EVENTOS SANITARIOS:
-      - Click en "Registrar Evento"
-      - Seleccionar animal de la lista
-      - Especificar tipo de evento y medicamento
-      - Registrar fecha del evento
+NUEVA FUNCIONALIDAD INTEGRADA
 
-   d) REGISTRAR PRODUCCIÓN:
-      - Click en "Registrar Producción"
-      - Seleccionar animal
-      - Especificar tipo y cantidad de producción
-      - Registrar fecha
+El sistema ahora incluye un chat de soporte en tiempo real que permite:
 
-3. CONSULTAS Y REPORTES:
+- Comunicación instantánea con soporte técnico
+- Respuestas automáticas inteligentes
+- Múltiples clientes simultáneos
+- Conexión/desconexión automática
 
-   - "Ver Animales": Muestra lista completa de animales registrados
-   - "Ver Reportes": Genera reporte con estadísticas y resúmenes
+COMANDOS DE CHAT RECONOCIDOS:
+- "hola", "buenas" → Saludo personalizado
+- "error", "problema" → Asistencia técnica
+- "animal", "registrar" → Ayuda con animales
+- "veterinario" → Ayuda con veterinarios  
+- "producción" → Ayuda con producción
+- "gracias" → Agradecimiento
 
-4. DATOS DE EJEMPLO PARA PROBAR:
 
-   Animal:
-     ID: VACA001
-     Especie: Vaca
-     Peso: 450
-     Fecha: 2020-05-15
+NOTAS IMPORTANTES
+--------------------
 
-   Evento:
-     Tipo: Vacunación
-     Medicamento: Piroxican
-     Fecha: 2024-01-20
-
-   Producción:
-     Tipo: Leche
-     Cantidad: 25.5
-     Fecha: 2024-01-21
-
+- La base de datos se guarda automáticamente (ganadero.db)
+- Los datos persisten entre ejecuciones
+- No eliminar ganadero.db para no perder información
+- Formato de fecha debe ser exacto: AAAA-MM-DD
+- El ID del animal debe ser único
+- El servidor de chat usa puerto 5000
 
 # Licencia
 
