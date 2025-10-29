@@ -55,14 +55,6 @@ El sistema ahora incluye un chat de soporte en tiempo real que permite:
 - Múltiples clientes simultáneos
 - Conexión/desconexión automática
 
-COMANDOS DE CHAT RECONOCIDOS:
-- "hola", "buenas" → Saludo personalizado
-- "error", "problema" → Asistencia técnica
-- "animal", "registrar" → Ayuda con animales
-- "veterinario" → Ayuda con veterinarios  
-- "producción" → Ayuda con producción
-- "gracias" → Agradecimiento
-
 
 NOTAS IMPORTANTES
 --------------------
