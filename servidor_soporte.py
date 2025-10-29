@@ -55,7 +55,7 @@ class ServidorSoporte:
                 cliente_socket.send(mensaje_bienvenida.encode('utf-8'))
                 
                 # Notificar a otros clientes
-                self.broadcast(f"🔔 {nickname} se ha unido al chat de soporte", cliente_socket)
+                self.broadcast(f"{nickname} se ha unido al chat de soporte", cliente_socket)
                 
                 # Hilo para manejar mensajes del cliente
                 threading.Thread(

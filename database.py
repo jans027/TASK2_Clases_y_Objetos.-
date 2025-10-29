@@ -61,7 +61,7 @@ class Database:
         conn = self.get_connection()
         cursor = conn.cursor()
         cursor.execute('INSERT INTO animales VALUES (?, ?, ?, ?)', 
-                      (animal.id, animal.especie, animal.peso, animal.fecha_nac))
+                    (animal.id, animal.especie, animal.peso, animal.fecha_nac))
         conn.commit()
         conn.close()
     
@@ -78,7 +78,7 @@ class Database:
         conn = self.get_connection()
         cursor = conn.cursor()
         cursor.execute('INSERT INTO veterinarios (nombre, especialidad) VALUES (?, ?)', 
-                      (veterinario.nombre, veterinario.especialidad))
+                    (veterinario.nombre, veterinario.especialidad))
         conn.commit()
         conn.close()
     

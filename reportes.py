@@ -109,7 +109,7 @@ class GeneradorReportesSimple:
         text_widget.configure(yscrollcommand=scrollbar.set)
         
         text_widget.insert('1.0', contenido)
-        text_widget.config(state='disabled')  # Hacerlo de solo lectura
+        text_widget.config(state='disabled') 
         
         text_widget.pack(side='left', fill='both', expand=True)
         scrollbar.pack(side='right', fill='y')
@@ -129,13 +129,13 @@ class InterfazGanaderaSimple:
         frame_controles.pack(fill='x', padx=10, pady=10)
         
         ttk.Button(frame_controles, text="Reporte Producción", 
-                  command=self.mostrar_reporte_produccion).pack(side='left', padx=5)
+                command=self.mostrar_reporte_produccion).pack(side='left', padx=5)
         
         ttk.Button(frame_controles, text="Reporte Sanitario", 
-                  command=self.mostrar_reporte_sanitario).pack(side='left', padx=5)
+                command=self.mostrar_reporte_sanitario).pack(side='left', padx=5)
         
         ttk.Button(frame_controles, text="Estadísticas Generales", 
-                  command=self.mostrar_estadisticas_generales).pack(side='left', padx=5)
+                command=self.mostrar_estadisticas_generales).pack(side='left', padx=5)
         
         # Área para mostrar reportes
         self.frame_reporte = ttk.Frame(frame_informes)
