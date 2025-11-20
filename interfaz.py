@@ -5,6 +5,8 @@ from datetime import datetime
 import threading
 import socket
 import time
+import pygame
+from laberinto import ejecutar_juego_laberinto
 
 class Database:
     def __init__(self, db_name='ganadero.db'):
@@ -329,15 +331,18 @@ class InterfazSimple:
                 command=self.abrir_chat_soporte, width=20).pack(pady=5)
         
         # Información rápida
-        info_frame = ttk.LabelFrame(main_frame, text="Resumen", padding="10")
+        info_frame = ttk.LabelFrame(main_frame, text="Resumen", padding="30")
         info_frame.pack(fill='x', pady=10)
         
         self.actualizar_resumen(info_frame)
         
         # Botón de salida
         ttk.Button(main_frame, text="Salir", 
-                command=self.salir, width=20).pack(pady=10)
-    
+                command=self.salir, width=20).pack(pady=80)
+        # Botón de laberinto
+        ttk.Button(botones_frame, text="Juego Relajante", 
+                command=self.jugar_laberinto, width=20).pack(pady=5)
+        
     def actualizar_resumen(self, frame):
         for widget in frame.winfo_children():
             widget.destroy()
@@ -774,6 +779,32 @@ class InterfazSimple:
         if self.cliente_chat:
             self.cliente_chat.desconectar()
         ventana.destroy()
+
+    def jugar_laberinto(self):
+        "Se ejecuta el juego en ventana separada"
+        def ejecutar_en_hilo():
+            try:
+                # Mostrar mensaje de información
+                messagebox.showinfo(
+                    "Juego de Laberinto", 
+                    "Instrucciones:\n\n"
+                    "• Flechas: Mover al jugador (azul)\n"
+                    "• R: Reiniciar juego\n"
+                    "• ESC: Salir del juego\n\n"
+                    "Objetivo: Llevar al jugador desde la entrada (verde) "
+                    "hasta la salida (roja) en el menor tiempo posible."
+                )
+                
+                # Ejecutar el juego
+                ejecutar_juego_laberinto()
+                
+            except Exception as e:
+                messagebox.showerror("Error", f"No se pudo iniciar el juego: {e}")
+        
+        # Ejecutar en hilo separado para no bloquear la interfaz principal
+        import threading
+        threading.Thread(target=ejecutar_en_hilo, daemon=True).start()
+
 
 if __name__ == "__main__":
     try:
