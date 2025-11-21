@@ -14,6 +14,7 @@ Reportes automáticos
 Base de datos SQLite integrada
 Chat de soporte en tiempo real
 Servidor de chat incorporado
+Juego de laberinto
 
 REQUISITOS DEL SISTEMA
 -------------------------
@@ -46,15 +47,34 @@ INSTRUCCIONES DE USO
 SISTEMA DE CHAT DE SOPORTE
 -----------------------------
 
-NUEVA FUNCIONALIDAD INTEGRADA
-
-El sistema ahora incluye un chat de soporte en tiempo real que permite:
+El sistema incluye un chat de soporte en tiempo real que permite:
 
 - Comunicación instantánea con soporte técnico
 - Respuestas automáticas inteligentes
 - Múltiples clientes simultáneos
 - Conexión/desconexión automática
 
+NUEVO: JUEGO DE LABERINTO
+--------------------------------------
+
+El sistema ahora incluye un juego de laberinto.
+
+CÓMO JUGAR:
+1. Click en "Juego"
+2. Objetivo: Llevar el círculo azul desde la entrada (verde) 
+   hasta la salida (roja)
+3. Controles:
+   - ↑ Flecha Arriba: Mover hacia arriba
+   - ↓ Flecha Abajo: Mover hacia abajo  
+   - ← Flecha Izquierda: Mover a la izquierda
+   - → Flecha Derecha: Mover a la derecha
+   - R: Reiniciar juego
+
+CARACTERÍSTICAS DEL JUEGO:
+Cronómetro automático que inicia con el primer movimiento
+Detección de colisiones con paredes
+Camino garantizado desde entrada hasta salida
+Mensaje de felicitaciones al completar
 
 NOTAS IMPORTANTES
 --------------------

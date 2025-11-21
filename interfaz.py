@@ -340,7 +340,7 @@ class InterfazSimple:
         ttk.Button(main_frame, text="Salir", 
                 command=self.salir, width=20).pack(pady=80)
         # Botón de laberinto
-        ttk.Button(botones_frame, text="Juego Relajante", 
+        ttk.Button(botones_frame, text="Juego", 
                 command=self.jugar_laberinto, width=20).pack(pady=5)
         
     def actualizar_resumen(self, frame):
