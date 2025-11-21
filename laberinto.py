@@ -19,7 +19,7 @@ ANCHO_CELDA = 30
 FILAS = 15
 COLUMNAS = 15
 ANCHO_VENTANA = COLUMNAS * ANCHO_CELDA
-ALTO_VENTANA = FILAS * ANCHO_CELDA + 50  # Espacio extra para el cronómetro
+ALTO_VENTANA = FILAS * ANCHO_CELDA + 50
 
 class Laberinto:
     def __init__(self):
@@ -35,10 +35,10 @@ class Laberinto:
         self.jugador_en_movimiento = False
     
     def generar_laberinto(self):
-        # Inicializar laberinto lleno de paredes (1)
+        # Inicializar laberinto
         self.laberinto = [[1 for _ in range(self.columnas)] for _ in range(self.filas)]
         
-        # Usar algoritmo de profundidad para generar laberinto
+        
         self._generar_recursivo(1, 1)
         
         # Asegurar entrada y salida
